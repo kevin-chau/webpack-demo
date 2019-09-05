@@ -94,6 +94,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_icon_png__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -102,6 +105,11 @@ function component() {
 
     element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.join(['Hello', 'webpack'], ' ');
     element.classList.add('hello');
+
+    const myIcon = new Image();
+    myIcon.src = _icon_png__WEBPACK_IMPORTED_MODULE_2___default.a;
+
+    element.appendChild(myIcon);
 
     return element;
 }
@@ -17288,7 +17296,7 @@ var options = {}
 options.insert = "head";
 options.singleton = false;
 
-var update = __webpack_require__(7)(content, options);
+var update = __webpack_require__(11)(content, options);
 
 if (content.locals) {
   module.exports = content.locals;
@@ -17300,8 +17308,13 @@ if (content.locals) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(6)(false);
+// Imports
+var getUrl = __webpack_require__(7);
+var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(8));
+var ___CSS_LOADER_URL___1___ = getUrl(__webpack_require__(9));
+var ___CSS_LOADER_URL___2___ = getUrl(__webpack_require__(10));
 // Module
-exports.push([module.i, ".hello {\n    color: red;\n}", ""]);
+exports.push([module.i, "@font-face {\n    font-family: 'MyFont';\n    src: url(" + ___CSS_LOADER_URL___0___ + ") format('truetype'),\n         url(" + ___CSS_LOADER_URL___1___ + ") format('truetype');\n    font-weight: 600;\n    font-style: normal;\n}\n\n.hello {\n    color: red;\n    font-family: 'MyFont';\n    background: url(" + ___CSS_LOADER_URL___2___ + ");\n}", ""]);
 
 
 /***/ }),
@@ -17402,6 +17415,54 @@ function toComment(sourceMap) {
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (url, needQuotes) {
+  // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+  url = url.__esModule ? url.default : url;
+
+  if (typeof url !== 'string') {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, '\\n'), "\"");
+  }
+
+  return url;
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "dba0c688b8d5ee09a1e214aebd5d25e4.ttf";
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "79750b1d82b2558801373d62dd7e5280.ttf";
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "2067e3f0203b9c2f43f90001ad1016f0.png";
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
